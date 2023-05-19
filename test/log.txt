@@ -1,0 +1,136 @@
+> develompent/access/Ownable.sol
+> develompent/access/roles/BrandRoles.sol
+> develompent/access/roles/CollectionRoles.sol
+> develompent/access/roles/PlatformRoles.sol
+> develompent/access/RolesControl.sol
+> develompent/access/Validator.sol
+> develompent/cryptography/MerkleTree.sol
+> develompent/Factory.sol
+> develompent/finance/Payments.sol
+> develompent/finance/Treasury.sol
+> develompent/interfaces/access/IValidator.sol
+> develompent/interfaces/finance/IPayments.sol
+> develompent/interfaces/finance/ITreasury.sol
+> develompent/interfaces/IFactory.sol
+> develompent/interfaces/IMasterStation.sol
+> develompent/interfaces/token/ICollection.sol
+> develompent/interfaces/token/ICollectionData.sol
+> develompent/interfaces/token/IERC20Mintable.sol
+> develompent/interfaces/token/IProxiedCollection.sol
+> develompent/MasterStation.sol
+> develompent/MockMarketplace.sol
+> develompent/token/CBCOIN.sol
+> develompent/token/Collection.sol
+> develompent/token/MockToken.sol
+> develompent/token/ProxiedCollection.sol
+
+Compilation:
+============
+
+Nothing to compile
+No need to generate any newer typings.
+
+Network Info
+============
+> HardhatEVM: v2.13.0
+> network:    hardhat
+
+  CBCOIN
+    ✔ Should revert if calling mint without DEFAULT_ADMIN_ROLE
+    ✔ Should revert if calling burn for another address
+    ✔ Should mint tokens to an address
+    ✔ Should burn tokens from self
+    ✔ Should mint revert if supply limit reached
+
+  Factory and ProxiedCollection
+    ✔ Should revert deploy collection if sender != master
+    ✔ Should deploy collection with collect data (114ms)
+
+  Master and Collection
+    Mint testing
+      ✔ mintTo (99ms)
+      ✔ mintTo admin (97ms)
+      ✔ mintTo royalty and ETH payment (569ms)
+      ✔ mintTo token payment (69ms)
+      ✔ mint (142ms)
+      ✔ public mint (74ms)
+      ✔ batch mintTo ETH payment (53ms)
+
+  MasterStation
+    ✔ Should revert if self-revoke
+    ✔ Should revert if try to revoke fron non-existent brand
+    ✔ Should revoke another address (78ms)
+    ✔ Should create collection if brand already exist (415ms)
+    ✔ Should revert creation of a collection if sender != creator
+    ✔ Should revert deploying collection if collection not exist
+    ✔ Should revert deploying collection if sender != creator (293ms)
+    ✔ Should revert collection disable if collection not exist in brand
+    ✔ Should revert collection disable if sender != owner
+    ✔ Should disable collection (68ms)
+    ✔ Should revert collection enable if collection not exist in brand
+    ✔ Should revert collection enable if sender != owner
+    ✔ Should enable collection (54ms)
+    ✔ Should revoke all roles when collection disabled (313ms)
+    ✔ Should DEFAULT_ADMIN grant PLATFORM_ADMIN
+    ✔ Should CHIEF_ADMIN grant PLATFORM_ADMIN
+    ✔ Should nobody else grant PLATFORM_ADMIN (151ms)
+    ✔ Should DEFAULT_ADMIN grant BRAND_ADMIN
+    ✔ Should CHIEF_ADMIN grant BRAND_ADMIN
+    ✔ Should PLATFORM_ADMIN grant BRAND_ADMIN (40ms)
+    ✔ Should nobody else grant BRAND_ADMIN (122ms)
+    ✔ Should DEFAULT_ADMIN grant COLLECTION_ADMIN
+    ✔ Should CHIEF_ADMIN grant COLLECTION_ADMIN
+    ✔ Should PLATFORM_ADMIN grant COLLECTION_ADMIN (43ms)
+    ✔ Should BRAND_ADMIN grant COLLECTION_ADMIN (42ms)
+    ✔ Should nobody else grant COLLECTION_ADMIN (79ms)
+    ✔ Should DEFAULT_ADMIN grant LIST_MODERATOR
+    ✔ Should CHIEF_ADMIN grant LIST_MODERATOR
+    ✔ Should PLATFORM_ADMIN grant LIST_MODERATOR (38ms)
+    ✔ Should BRAND_ADMIN grant LIST_MODERATOR (59ms)
+    ✔ Should COLLECTION_ADMIN grant LIST_MODERATOR (58ms)
+    ✔ Should nobody else grant LIST_MODERATOR (45ms)
+    ✔ Should BRAND_ADMIN cant grant COLLECTION_ADMIN or LIST_MODERATOR in other brand (673ms)
+    ✔ Should COLLECTION_ADMIN cant grant LIST_MODERATOR in other brand (874ms)
+    ✔ Should only DEFAULT_ADMIN grant Validator (105ms)
+    ✔ Should grantValidator revert if already validator
+    ✔ Should revokeValidator revert if already not validator
+    ✔ Revoke platform admin (97ms)
+    ✔ Revoke brand admin (85ms)
+    ✔ Revoke collection admin (133ms)
+    ✔ Revoke list moderator (140ms)
+    ✔ Should purchase CBCoin with token (285ms)
+    ✔ Should purchase CBCoin with ETH (157ms)
+    ✔ Should purchase CBCoin with ETH and refund excess ETH (181ms)
+    ✔ Should revert receiving ETH
+
+  Payments and Treasury
+    ✔ Should admin can grant validator role
+    ✔ Should non-admin cant grant validator role
+    ✔ Should admin can revoke validator role (56ms)
+    ✔ Should non-admin cant revoke validator role
+    ✔ Should purchase CBCoin with ETH (158ms)
+    ✔ Should purchase CBCoin with token (235ms)
+    ✔ Should fail to purchase CBCoin with token when payment token is zero address
+    ✔ Should fail to purchase CBCoin with token when payment amount is zero
+    ✔ Should fail to purchase CBCoin with token when purchased token amount is zero
+    ✔ Should fail to purchase CBCoin with ETH when payment token is non-zero address
+    ✔ Should fail to purchase CBCoin with ETH when payment amount is zero
+    ✔ Should fail to purchase CBCoin with ETH when purchased token amount is zero
+    ✔ Should fail to purchase CBCoin with ETH when insufficient ETH sent
+    ✔ Should fail to purchase CBCoin with token if incorrect receiver address
+    ✔ Should fail to purchase CBCoin with ETH if incorrect receiver address
+    ✔ Should fail to purchase CBCoin if verifications are not enough (38ms)
+    ✔ Should purchase CBCoin if verifications are enough (214ms)
+    ✔ Should purchase CBCoin with ETH and refund excess ETH (163ms)
+    ✔ Should purchase CBCoin to another receiver (189ms)
+    ✔ Should admin withdraw funds (237ms)
+    ✔ Should fail to withdraw funds when not admin
+    ✔ Should list all validators
+    ✔ Should withdraw only ETH when the token address is zero (192ms)
+    ✔ Should not withdraw ETH when the balance is zero (73ms)
+    ✔ Should admin set min verifications count
+    ✔ Should revert if non-admin try to set min verifications count
+    ✔ Should revert if admin try to set min verifications count to 0
+    ✔ Should revert if non-admin try to set payments contract address to treasury
+    ✔ Should revert if non-admin try to withdraw from treasury
+    ✔ Should revert if admin try to withdraw from treasury more tokens than stored

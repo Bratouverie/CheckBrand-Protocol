@@ -1,0 +1,87 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "IFactory",
+  "sourceName": "contracts/develompent/interfaces/IFactory.sol",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "_brand",
+          "type": "string"
+        },
+        {
+          "internalType": "address",
+          "name": "_creator",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_supplyLimit",
+          "type": "uint256"
+        },
+        {
+          "components": [
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "symbol",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "baseURI",
+              "type": "string"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "whitelist",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "bookingList",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "uint256",
+              "name": "publicMintTokensLimit",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint96",
+              "name": "earnings",
+              "type": "uint96"
+            },
+            {
+              "internalType": "enum ICollectionData.MintStage",
+              "name": "mintStage",
+              "type": "uint8"
+            }
+          ],
+          "internalType": "struct ICollectionData.CollectionData",
+          "name": "_data",
+          "type": "tuple"
+        }
+      ],
+      "name": "deployCollection",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "collection",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}
