@@ -15,10 +15,6 @@ __CheckBrand contracts__
 
 ![chart](chart.jpg)
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
-
 ## Structures
 
 В данном разделе приведены интерфейсы на typescript, которые могут быть использованы в дальнейшем, а также фрагменты кода с использованием библиотеки ethers.js для взаимодействия с данными структурами.
@@ -43,9 +39,7 @@ interface Signature {
 }
 ```
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 ### BuyTokensData
 
@@ -83,9 +77,7 @@ interface BuyTokensData {
 }
 ```
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 Хеш можно посчитать локально следующим образом:
 ```typescript
@@ -124,9 +116,7 @@ async function calcHash(data: BuyTokensData) {
 
 Значения `payments.CACHED_DOMAIN_SEPARATOR()` и `payments.BUY_TOKENS_TYPE_HASH()` являются константами. Их можно сохранить локально и переиспользовать вместо того, чтобы постоянно обращаться к контракту Payments.
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 Либо же хеш можно посчитать, обратившись к контракту:
 ```typescript
@@ -162,9 +152,7 @@ const signature : Signature = {
 }
 ```
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 ### CreateCollectionData
 
@@ -197,9 +185,7 @@ interface CreateCollectionData {
 
 После чего на основе данной структуры должен быть получен хеш и подписан валидатором.
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 Хеш можно посчитать локально следующим образом:
 ```typescript
@@ -238,9 +224,7 @@ async function calcHash(data: CreateCollectionData) {
 
 Значение `payments.CREATE_TOLLECTION_TYPE_HASH()` является константой. Его можно сохранить локально и переиспользовать вместо того, чтобы постоянно обращаться к контракту Payments.
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 Либо же хеш можно посчитать, обратившись к контракту:
 ```typescript
@@ -277,9 +261,7 @@ const signature : Signature = {
 }
 ```
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 ### CollectionData
 
@@ -350,9 +332,7 @@ interface InputRoyaltySettings {
 }
 ```
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 ### InputPaymentSettings
 
@@ -385,9 +365,7 @@ interface InputPaymentSettings {
 }
 ```
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 ## Mint Lists
 
@@ -468,9 +446,7 @@ function keccakB(bookingData: BookingList) {
 }
 ```
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 ### Whitelist
 
@@ -506,9 +482,7 @@ function keccakWL(whitelistData: Whitelist) {
 }
 ```
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 ### Recomendations
 
@@ -518,9 +492,7 @@ function keccakWL(whitelistData: Whitelist) {
 2. Чтобы увеличить или уменьшить пользователю `mintLimit` в вайтлисте, необходимо просто изменить данный параметр в структуре и обновить merkle root в контракте.
    Параметр `mintLimit` для вайтлистов является индивидуальным и должен быть указан для каждого пользователя отдельно.
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 # Contracts
 
@@ -564,9 +536,7 @@ function balanceOf(
 
 Возвращает текущий баланс токенов по адресу `account`
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 ##### allowance
 ```solidity
@@ -578,9 +548,7 @@ function allowance(
 
 Возвращает текущее количество токенов, которые адрес `owner` разрешил использовать адресу `spender`
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 #### Call
 
@@ -661,9 +629,7 @@ struct CreateCollectionData {
 }
 ```
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 #### Signature
 Представляет из себя подпись длиной 65 байтов, разбитую на 3 части.
@@ -675,9 +641,7 @@ struct Signature {
 }
 ```
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 ### Methods
 
@@ -725,9 +689,7 @@ function BUY_TOKENS_TYPE_HASH() returns (bytes32)
 
 Возвращает хеш структуры покупки токенов, который используется в eip712.
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 ##### CREATE_COLLECTION_TYPE_HASH
 ```solidity
@@ -804,9 +766,7 @@ function withdrawFunds(
 При вызове переводит весь баланс нативных токенов сети и весь баланс токена `tokenToWithdraw`, если передан не `address(0)`.
 Функция может быть вызвана только `DEFAULT_ADMIN_ROLE`.
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 ##### setMinVerificationsCount
 ```solidity
@@ -818,9 +778,7 @@ function setMinVerificationsCount(
 Устанавливает новое значение `minVerificationsCount`.
 Функция может быть вызвана только `DEFAULT_ADMIN_ROLE`.
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 ## Treasury
 
@@ -862,9 +820,7 @@ function totalSupply() returns (uint256)
 
 Возвращает количество токенов CBCOIN, доступных в Treasury.
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 #### Call
 
@@ -884,9 +840,7 @@ function setPaymentsContractAddress(address payments)
 Устанавливает адрес контракта Payments.
 Функция может быть вызвана только `DEFAULT_ADMIN_ROLE`.
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 ## Factory
 
@@ -912,9 +866,7 @@ function deployedCollections(uint256 index) returns (address)
 
 Возвращает адрес развернутой коллекции, хранящийся по индексу `index`.
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 ## Master
 
@@ -947,9 +899,7 @@ struct BuyTokensData {
 }
 ```
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 #### CreateCollectionData
 ```solidity
@@ -984,9 +934,7 @@ struct CollectionData {
 }
 ```
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 #### CreatedCollection
 Хранит данные о созданной, но еще не развернутой коллекции.
@@ -1007,9 +955,7 @@ struct Signature {
 }
 ```
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 ### Methods
 
@@ -1057,9 +1003,7 @@ function listValidators() returns (address[])
 
 Возвращает массив адресов, являющихся Валидаторами.
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 ##### isBrandExist
 ```solidity
@@ -1098,9 +1042,7 @@ function hasAccessToBrand(
 
 Возвращает `true`, если адрес `account` имеет роль `role` в рамках бренда `brand`.
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 ##### hasAccessToCollection
 ```solidity
@@ -1145,9 +1087,7 @@ function checkAccessToBrand(
 
 Возвращает ошибку, если адрес `account` не имеет роль `role` в рамках бренда `brand`.
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 ##### checkAccessToCollection
 ```solidity
@@ -1232,9 +1172,7 @@ function listDeployedBrandCollections(
 
 Возвращает массив адресов коллекций, развернутых брендом `brand`.
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 #### Call
 
@@ -1272,9 +1210,7 @@ function createCollection(
 Если указанный бренд еще не существует, то он создается, а инициатор транзакции назначается администратором данного бренда.
 Если бренд уже существует, то чтобы создать в нем коллекцию, инициатор транзакции должен являться администратором данного бренда или выше.
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 ##### deployCollection
 ```solidity
@@ -1315,9 +1251,7 @@ function setFactory(address _factory)
 Устанавливает адрес для контракта Factory.
 Функция может быть вызвана только `DEFAULT_ADMIN_ROLE`.
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 ##### disableCollection
 ```solidity
@@ -1354,9 +1288,7 @@ function grantValidatorRole(address account)
 Выдает адресу `account` роль валидатора.
 Функция может быть вызвана только `DEFAULT_ADMIN_ROLE`.
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 ##### revokeValidatorRole
 ```solidity
@@ -1428,9 +1360,7 @@ function revokeCollectionAdminRole(
 Снимает с адреса `account` роль `COLLECTION_ADMIN_ROLE` в рамках коллекции `collection` бренда `brand`.
 Функция может быть вызвана только `DEFAULT_ADMIN_ROLE` или `CHIEF_ADMIN_ROLE`, или `PLATFORM_ADMIN_ROLE`, или `BRAND_ADMIN_ROLE` в рамках бренда `brand`.
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 ## Collection
 
@@ -1454,9 +1384,7 @@ keccak256(abi.encode(
 ));
 ```
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 #### bookingHash
 Рассчитывается на основде адреса получателя, id токена, параметров роялти и параметров оплаты.
@@ -1482,9 +1410,7 @@ keccak256(abi.encode(
 ));
 ```
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 #### creatorsHash
 Рассчитывается на основе параметров роялти.
@@ -1514,9 +1440,7 @@ bytes32 receiversHash = keccak256(abi.encode(
 ));
 ```
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 ### Structs
 
@@ -1543,9 +1467,7 @@ struct InputPaymentSettings {
 }
 ```
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 #### RoyaltyStorage
 Используется для хранения данных Royalty.
@@ -1561,9 +1483,7 @@ struct RoyaltyStorage {
 }
 ```
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 ### Methods
 
@@ -1611,9 +1531,7 @@ function whitelist() returns (bytes32)
 
 Возвращает Merkle Root для whitelist'а.
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 ##### bookingList
 ```solidity
@@ -1657,9 +1575,7 @@ function mintStage() returns (uint96)
 
 Возвращает активную стадию минта.
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 ##### name
 ```solidity
@@ -1745,9 +1661,7 @@ function canMintToken(
 
 Возвращает `true`, если пользователь `user` может минтить токен `tokenId`, используя bookingList или whiteList.
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 ##### hasWhitelist
 ```solidity
@@ -1790,9 +1704,7 @@ function isTokenBookedFrom(
 
 Возвращает `true`, если токен `tokenId` забронирован за `user`.
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 ##### isTokenBookedFromAdmin
 ```solidity
@@ -1820,9 +1732,7 @@ function isTokenNotBooked(
 
 Возвращает `true`, если токен `tokenId` ни за кем не забронирован.
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 #### Call
 
@@ -1947,9 +1857,7 @@ function batchTransferFrom(
 
 Эквивалентно обычному `transferFrom`, но все аргументы принимаются в виде массивов для возможности передачи нескольких токенов в рамках одной транзакции.
 
-<div style="page-break-after: always; visibility: hidden"> 
-\pagebreak 
-</div>
+
 
 ##### batchSafeTransferFrom
 ```solidity
